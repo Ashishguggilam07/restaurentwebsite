@@ -15,6 +15,7 @@ function Header(){
             <li className="text-blue-500 underline font-bold"><Link to="/About">AboutUs</Link></li>
             <li className="text-blue-500 underline font-bold"><Link to="/contact">ContactUs</Link></li>
             <li className=" font-bold"><Link to="/cart">Cart- {cartItems.length} items</Link></li>
+            <li>lobby</li>
             
         </ul>
        </div> 
