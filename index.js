@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
 import Header from "./src/components/Header";
@@ -13,6 +13,7 @@ import Contact from "./src/components/Contact";
 import RestaurantDetails from "./src/components/RestaurantDetails";
 import { Provider } from "react-redux";
 import appStore from "./src/utils/appStore";
+import userContext from "./src/utils/userContext";
 
 
 //const header1=React.createElement("h1",{id:1},"hello welcome to react");
@@ -56,11 +57,17 @@ const approuter=createBrowserRouter([
 
 
 function App(){
+    const [userName]=useState("ashish")
     return (
         <Provider store={appStore}>
-        <Header/>
-        <Outlet/>
-        <Footer/>
+            <userContext.Provider value={{loggedInUser:userName}}>
+           
+            <Header/>
+            <Outlet/>
+            <Footer/>
+
+            </userContext.Provider>
+        
         
         </Provider>
     )
