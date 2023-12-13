@@ -14,8 +14,8 @@ import RestaurantDetails from "./src/components/RestaurantDetails";
 import { Provider } from "react-redux";
 import appStore from "./src/utils/appStore";
 import userContext from "./src/utils/userContext";
-
-
+import { CartContext } from "./src/utils/cartcontext";
+import { CartProvider } from "./src/utils/cartcontext";
 //const header1=React.createElement("h1",{id:1},"hello welcome to react");
 //const root1=ReactDOM.createRoot(document.getElementById("root"));
 //root1.render(header1);
@@ -61,11 +61,11 @@ function App(){
     return (
         <Provider store={appStore}>
             <userContext.Provider value={{loggedInUser:userName}}>
-           
+           <CartProvider>
             <Header/>
             <Outlet/>
             <Footer/>
-
+            </CartProvider>
             </userContext.Provider>
         
         

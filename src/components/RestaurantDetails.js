@@ -4,11 +4,14 @@ import Shimmer from "./Shimmer";
 import { img_url } from "../utils/constants";
 import { useDispatch } from "react-redux";
 import { addItems } from "../utils/cartSlice";
+import { CartContext } from "../utils/cartcontext";
+import { useContext } from "react";
 
 const RestaurantDetails=()=>{
     const {id}=useParams();
     const menu_data=useRestaurantMenuAPI(id);
-    const dispatch=useDispatch()
+    const dispatch=useDispatch();
+    const {addToCart}=useContext(CartContext)
     
 
     if (menu_data===null) return <Shimmer/>    
@@ -19,7 +22,7 @@ const RestaurantDetails=()=>{
 
     function handleAddItem(item){
       
-      dispatch(addItems(item));
+      addToCart(item);
     }
 
     return (
